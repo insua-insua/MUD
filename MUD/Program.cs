@@ -15,11 +15,11 @@ namespace MUD
 
 
             // 플레이어 능력치 입력. power, hp
-            Console.WriteLine($"공격력을 입력해주세요");
+            Console.WriteLine("공격력을 입력해주세요.");
             string userPower = Console.ReadLine();
             int power = int.Parse(userPower);
 
-            Console.WriteLine($"HP를 입력해주세요");
+            Console.WriteLine("HP를 입력해주세요.");
             string userHP = Console.ReadLine();
             int hp = int.Parse(userHP);
 
