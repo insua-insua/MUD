@@ -5,9 +5,34 @@ namespace MUD
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             // 플레이어 이름 자동생성
+            string playerRandomName = SetRandomPlayerName();
+
+            // 환영합니다
+            Console.WriteLine($"환영합니다 {playerRandomName}님!\n");
+
+
+            // 플레이어 능력치 입력. power, hp
+            Console.WriteLine($"공격력을 입력해주세요");
+            string userPower = Console.ReadLine();
+            int power = int.Parse(userPower);
+
+            Console.WriteLine($"HP를 입력해주세요");
+            string userHP = Console.ReadLine();
+            int hp = int.Parse(userHP);
+
+            Player player = new Player(playerRandomName, power, hp);
+
+
+            // 몬스터 공격
+            Monster monster = new Monster();
+            monster.hp -= player.power;
+        }
+
+        private static string SetRandomPlayerName()
+        {
             List<string> names = new List<string>();
             Dictionary<string, string> nameMap = new Dictionary<string, string>();
             nameMap["레드"] = "권투사";
@@ -26,24 +51,7 @@ namespace MUD
 
             int index = random.Next(names.Count);
             string playerName = names[index];
-
-            // 환영합니다
-            Console.WriteLine($"환영합니다 {playerName}님!\n");
-
-
-            // 플레이어 능력치 입력. power, hp
-            string userPower = Console.ReadLine();
-            string userHP = Console.ReadLine();
-
-            int power = int.Parse(userPower);
-            int hp = int.Parse(userHP);
-
-            Player player = new Player(playerName, power, hp);
-
-            // 몬스터 공격
-
-            Monster monster = new Monster();
-            monster.hp -= player.power;
+            return playerName;
         }
     }
 }
