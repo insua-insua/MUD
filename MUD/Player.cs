@@ -1,13 +1,35 @@
-﻿internal class Player
-{
-    public string playerName;
-    public int power;
-    public int hp;
+﻿using System;
 
-    public Player(string playerName, int power, int hp)
+namespace MUD
+{
+    public class Player
     {
-        this.playerName = playerName;
-        this.power = power;
-        this.hp = hp;
+        public string DisplayName
+        {
+            get { return $"({playerJop} {playerName}님)"; }
+        }
+
+        public string playerName;
+        public string playerJop;
+        public int power;
+        public int hp;
+        int maxHp = 10;
+
+        public Player(string playerName, string playerJop, int power, int _hp)
+        {
+           
+            this.playerName = playerName;
+            
+            this.playerJop = playerJop;
+
+            this.power = power;
+            maxHp = _hp;
+            this.hp = maxHp;
+        }
+        internal void RestoreHp()
+        {
+            if (hp < maxHp)
+                hp++;
+        }
     }
 }
